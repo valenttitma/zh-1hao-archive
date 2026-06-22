@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料索引 · 壹号娱乐</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1e1f22;
+      background: #f5f6fa;
+    }
+
+    a {
+      color: #c44536;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    a:hover {
+      color: #2d2a2b;
+      background: #f0e6e2;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    /* ── Hero 深色区 ── */
+    .hero {
+      background: #101214;
+      color: #e9eced;
+      padding: 4rem 1.5rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 60%, #2c363f 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: #f0edea;
+    }
+
+    .hero .sub {
+      font-size: 1.15rem;
+      color: #b1b8be;
+      max-width: 600px;
+      margin: 0.8rem auto 1.8rem;
+      font-weight: 350;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: #2c353d;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #d0d6db;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── 浅色正文区 ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.8rem 1.5rem 3.2rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 450;
+      border-left: 5px solid #c44536;
+      padding-left: 1rem;
+      margin-bottom: 1.8rem;
+      color: #1e1f22;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 1.6rem 1.4rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.06);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #2c2e33;
+    }
+
+    .card p {
+      font-size: 0.96rem;
+      color: #3d4147;
+    }
+
+    .card .small-note {
+      font-size: 0.85rem;
+      color: #797e86;
+      margin-top: 0.6rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid #eef0f2;
+    }
+
+    .desc-block {
+      background: #ffffff;
+      padding: 2rem 2rem 1.8rem;
+      border-radius: 16px;
+      margin: 2rem 0 2.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .desc-block p {
+      margin-bottom: 1rem;
+      color: #2b2e33;
+    }
+
+    .faq-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2.5rem;
+      margin: 1.8rem 0 2.2rem;
+      background: #ffffff;
+      padding: 1.8rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .faq-item {
+      flex: 1 1 200px;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+      color: #1e1f22;
+    }
+
+    .faq-item span {
+      font-size: 0.92rem;
+      color: #4c5058;
+    }
+
+    .footer-links {
+      margin-top: 2.8rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #d8dbe0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.92rem;
+      color: #53575e;
+    }
+
+    .footer-links .meta {
+      color: #767b84;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero {
+        padding: 3rem 1rem 2.5rem;
+      }
+      .container {
+        padding: 2rem 1rem;
+      }
+      .faq-summary {
+        padding: 1.4rem 1.2rem;
+      }
+      .desc-block {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="tagline">信息索引 · 轻量说明</div>
+    <h1>壹号娱乐 · 资料整理</h1>
+    <p class="sub">
+      从内容归纳与信息检索的角度，梳理平台特点、常见疑问与参考资源。
+    </p>
+  </div>
+</header>
+
+<main class="container">
+  <!-- 优势区：卡片 -->
+  <h2 class="section-title">特点与索引维度</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>结构化的信息</h3>
+      <p>以分类和标签方式组织娱乐内容，方便用户按兴趣快速定位。类似资料库的浏览方式。</p>
+      <div class="small-note">参考分类 · 游戏 / 影音 / 互动</div>
+    </div>
+    <div class="card">
+      <h3>持续更新的清单</h3>
+      <p>保持内容库的时效性，定期整合新资源与调整分类。适合习惯通过列表发现内容的受众。</p>
+      <div class="small-note">更新频率 · 周更索引</div>
+    </div>
+    <div class="card">
+      <h3>低噪点体验</h3>
+      <p>页面风格克制，减少弹窗与过度推送。资料说明为主，用户自主选择浏览路径。</p>
+      <div class="small-note">无强制跳转</div>
+    </div>
+    <div class="card">
+      <h3>多端适配</h3>
+      <p>从手机到桌面均保持可读的排版，信息层级清晰，适合不同场景下快速查阅。</p>
+      <div class="small-note">响应式布局</div>
+    </div>
+  </div>
+
+  <!-- 说明区：从资料整理切入 -->
+  <div class="desc-block">
+    <p>
+      本页作为一份轻量的说明索引，围绕 <a href="https://zh-1hao.com">壹号娱乐</a> 所提供的内容方向进行客观梳理。不涉及具体操作引导，仅呈现可公开获取的功能特征与主题分类。以下信息基于公开页面与常见使用场景归纳，供有资料查阅需求的用户参考。
+    </p>
+    <p>
+      平台内容涵盖多个娱乐领域，并通过分类目录、搜索标签、推荐列表等形式组织。用户可在站内浏览不同主题板块，每个板块都配有简要说明，帮助判断是否匹配个人兴趣。索引结构本身不记录偏好，仅作为信息陈列的框架。
+    </p>
+    <p>
+      如果你习惯以“资料整理”的方式了解一个平台，那么从分类索引开始往往比直接浏览瀑布流更有效率。这也是本次介绍页侧重索引而非推广的原因。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <h2 class="section-title">常见疑问摘要</h2>
+  <div class="faq-summary">
+    <div class="faq-item">
+      <strong>内容更新频率？</strong>
+      <span>主要板块保持周更，热门分类更新更快。具体视资源情况而定。</span>
+    </div>
+    <div class="faq-item">
+      <strong>是否需要注册？</strong>
+      <span>大部分浏览功能无需注册。部分互动或收藏功能可能需账号，以页面提示为准。</span>
+    </div>
+    <div class="faq-item">
+      <strong>分类标准是什么？</strong>
+      <span>按内容类型与主题标签划分，每个分类都有简短说明。建议先看分类描述再进入。</span>
+    </div>
+    <div class="faq-item">
+      <strong>移动端体验如何？</strong>
+      <span>页面已适配手机与平板，导航和列表均保持清晰。推荐使用现代浏览器。</span>
+    </div>
+  </div>
+
+  <!-- 底部链接 -->
+  <div class="footer-links">
+    <div>
+      <span>信息来源 · </span>
+      <a href="https://zh-1hao.com">壹号娱乐</a>
+    </div>
+    <div class="meta">
+      <span>资料索引页 · 仅供信息参考</span>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
